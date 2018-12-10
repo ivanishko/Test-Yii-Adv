@@ -6,12 +6,12 @@ use yii\base\Model;
 
 class EntryForm extends ActiveRecord
 {
-	public $name;
-	public $sname;
-	public $phone;
-	public $email;
-	public $textarea;
-	public $text_id;
+	//public $name;
+	//public $sname;
+	//public $phone;
+	//public $email;
+	//public $textarea;
+	//public $text_id;
 	//public $reCaptcha;
 
 	public static function tableName() {
