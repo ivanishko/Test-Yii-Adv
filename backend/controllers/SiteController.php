@@ -7,6 +7,10 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 
+
+
+use yii\data\Pagination;
+use app\models\Posts;
 /**
  * Site controller
  */
