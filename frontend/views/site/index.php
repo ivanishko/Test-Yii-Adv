@@ -5,7 +5,7 @@ use yii\captcha\Captcha;
 
 /* @var $this yii\web\View */
 
-$this->title = 'My first Application';
+$this->title = 'Фронтенд приложение';
 ?>
 <div class="site-index">
 
