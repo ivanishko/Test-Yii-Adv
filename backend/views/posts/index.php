@@ -2,11 +2,14 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 ?>
-<h1>Записи</h1>
+<h1>Все аписи</h1>
 <ul>
 <?php foreach ($posts as $post): ?>
     <li>
-        <?= Html::encode("{$post->name} ({$post->sname})") ?>:
+        <?= Html::encode("{$post->name} {$post->sname}({$post->email}, {$post->phone})") ?>:
+        <br>
+        <b><?= $post->user; ?></b>
+        <br>
         <?= $post->textarea ?>
     </li>
 <?php endforeach; ?>

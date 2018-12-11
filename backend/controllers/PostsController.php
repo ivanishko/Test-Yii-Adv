@@ -17,7 +17,7 @@ class PostsController extends Controller
             'totalCount' => $query->count(),
         ]);
 
-        $posts = $query->orderBy('text_id')
+        $posts = $query->orderBy('text_id DESC')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
