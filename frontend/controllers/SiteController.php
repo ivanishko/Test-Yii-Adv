@@ -226,7 +226,7 @@ class SiteController extends Controller
             $model->email;
             $model->textarea;
             if (Yii::$app->user->isGuest) {
-            $model->user ="No login";
+            $model->user ="Guest";
             } else {
             $model->user = Yii::$app->user->identity->username;
             }
