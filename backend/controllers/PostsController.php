@@ -27,4 +27,26 @@ class PostsController extends Controller
             'pagination' => $pagination,
         ]);
     }
+/* доделать вывод 
+  public function actionUserposts()
+    {
+        $query = Posts::find();
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);
+
+        $posts = $query->orderBy('text_id DESC')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('index', [
+            'posts' => $posts,
+            'pagination' => $pagination,
+        ]);
+    }
+*/
+
 }
