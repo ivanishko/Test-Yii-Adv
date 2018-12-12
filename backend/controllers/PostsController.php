@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use Yii;
 use yii\web\Controller;
 use yii\data\Pagination;
 use backend\models\Posts;
@@ -27,26 +28,27 @@ class PostsController extends Controller
             'pagination' => $pagination,
         ]);
     }
-/* доделать вывод 
+
   public function actionUserposts()
     {
-        $query = Posts::find();
+        $query = Posts::find()->orderBy('text_id DESC')
+            ->where(['user'=>Yii::$app->user->identity->username]);
 
         $pagination = new Pagination([
             'defaultPageSize' => 5,
-            'totalCount' => $query->count(),
+            'totalCount' => $query->count()
         ]);
 
-        $posts = $query->orderBy('text_id DESC')
+        $posts = $query
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
 
-        return $this->render('index', [
+        return $this->render('userposts', [
             'posts' => $posts,
             'pagination' => $pagination,
         ]);
     }
-*/
+
 
 }
