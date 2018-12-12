@@ -27,8 +27,8 @@ class EntryForm extends ActiveRecord
 		return [
 			['name', 'string', 'min' => 3],
 			['sname', 'string', 'min' => 3],
-			['name', 'match', 'pattern' => '/^[А-яёЁA-z]+$/', 'message' => 'В имени только буквы!'], 
-			['sname', 'match', 'pattern' => '/^[а-яА-ЯёЁa-zA-Z]+$/', 'message' => 'В фамилии только буквы!'], 	
+			['name', 'match', 'pattern' => '/^[а-яА-ЯЁёA-Za-z]+$/u', 'message' => 'В имени только буквы!'], 
+			['sname', 'match', 'pattern' => '/^[а-яА-ЯЁёA-Za-z]+$/u', 'message' => 'В фамилии только буквы!'], 	
 			[['name','sname','phone','email','textarea'], 'required'],
 			['email', 'email'],
 			['text_id', 'safe' ],
