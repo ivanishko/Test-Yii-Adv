@@ -221,8 +221,8 @@ class SiteController extends Controller
             // данные в $model удачно проверены
 
             // делаем что-то полезное с $model ...
-            $model->name;
-            $model->sname;
+            $model->name = ucfirst($model->name);
+            $model->sname = ucfirst($model->sname);
             $model->email;
             $model->textarea;
             if (Yii::$app->user->isGuest) {
