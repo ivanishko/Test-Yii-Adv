@@ -12,7 +12,7 @@ class EntryForm extends ActiveRecord
 	//public $email;
 	//public $textarea;
 	//public $text_id;
-	//public $reCaptcha;
+	public $reCaptcha;
 
 	public static function tableName() {
 		return 'posts';
@@ -32,8 +32,8 @@ class EntryForm extends ActiveRecord
 			[['name','sname','phone','email','textarea'], 'required'],
 			['email', 'email'],
 			['text_id', 'safe' ],
-			/*[['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => 'your secret key', 'uncheckedMessage' => 'Please confirm that you are not a bot.'],  
-			*/
+			[['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'secret' => '6LexEIEUAAAAAIKQA2nCoeHQ0d4segRpAnANpIBo', 'uncheckedMessage' => 'Please confirm that you are not a bot.']
+			
 		];
 	}
 }

@@ -12,7 +12,10 @@ use yii\widgets\ActiveForm;
     'mask' => '7(999)999-99-99',
 ]) ?>
 	<?= $form->field($model,'textarea')->label('Сообщение')->textarea(['minlength'=>10,'style'=>'height:100px']);?>
-	
+	<?= $form->field($model, 'reCaptcha')->widget(
+    \himiklab\yii2\recaptcha\ReCaptcha::className(),
+    ['siteKey' => '6LexEIEUAAAAAEU1gikOEGEVVx3qfM-s6oieMDPc']
+) ?>
 
 
 
