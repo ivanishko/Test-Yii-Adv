@@ -3,32 +3,125 @@
 namespace backend\controllers;
 
 use Yii;
+use app\models\Userposts;
+use backend\models\PostSearch;
 use yii\web\Controller;
-use yii\data\Pagination;
-use backend\models\Posts;
-use yii\grid\GridView;
-use yii\data\ActiveDataProvider;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
-
+/**
+ * UserpostsController implements the CRUD actions for Userposts model.
+ */
 class UserpostsController extends Controller
-{   
-    public function actionIndex() 
-    {    
-     $query = Posts::find();
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
 
-   
-        $dataProvider = new ActiveDataProvider([
-            'query' => Posts::find()->orderBy('text_id DESC')
-            ->where(['user'=>Yii::$app->user->identity->username]),
-            'pagination' => [
-            'pageSize' => 20,
-                ],
-            ]);
-            echo GridView::widget([
+    /**
+     * Lists all Userposts models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new PostSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'columns' => [
-                ],
         ]);
     }
 
+    /**
+     * Displays a single Userposts model.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    /**
+     * Creates a new Userposts model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new Userposts();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->text_id]);
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Updates an existing Userposts model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->text_id]);
+        }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Deletes an existing Userposts model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the Userposts model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Userposts the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Userposts::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
 }
