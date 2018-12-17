@@ -19,9 +19,11 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -38,6 +40,7 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Домой', 'url' => ['/site/index']],
         ['label' => 'Форма ввода', 'url' => ['/site/entry']],
+        ['label' => 'Вёрстка', 'url' => ['/testcss']],
         //['label' => 'О сайте', 'url' => ['/site/about']],
         //['label' => 'Контакты', 'url' => ['/site/contact']],
     ];
