@@ -29,7 +29,7 @@ $this->title = 'My Yii Application';
         </menu>
 
         <div class="wrapper">
-            <aside>
+            <aside class="aside">
                 <div class="aside_item">Хранилище</div>
                 <div class="aside_item">Музыка</div>
                 <div class="aside_item">Игровые сервера</div>
